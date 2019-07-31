@@ -3,7 +3,10 @@
 from flask_restplus import Api
 from flask import Blueprint
 
-from .main.controller.user_controller import api as user_ns
+from .main.controller.nlu_controller import api as nlu_ns
+from .main.controller.rasa_template_controller import api as rasa_template_ns
+from .main.controller.rasa_template_item_controller import api as rasa_template_item_ns
+
 
 blueprint = Blueprint('api', __name__)
 
@@ -13,4 +16,7 @@ api = Api(blueprint,
           description='a boilerplate for flask restplus web service'
           )
 
-api.add_namespace(user_ns, path='/user')
+
+api.add_namespace(nlu_ns, path='/nlu')
+api.add_namespace(rasa_template_ns, path='/rasa_template')
+api.add_namespace(rasa_template_item_ns, path='/rasa_template_item')
